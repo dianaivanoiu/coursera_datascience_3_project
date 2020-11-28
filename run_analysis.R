@@ -55,6 +55,6 @@ names(mean_std) <- gsub("\\.", "", names(mean_std))
 ## 5. from the data set in step 4, creates a second, independent tidy data set with the average of each 
 # variable for each activity and each subject 
 tidy <- group_by(mean_std, activity_description, subject) %>% summarise_all(mean)
-write.table(tidy, file = "tidy.txt")
+write.table(tidy, file = "tidy.txt", row.names = FALSE)
 
 
