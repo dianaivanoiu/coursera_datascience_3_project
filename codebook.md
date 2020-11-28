@@ -36,7 +36,7 @@ The dataset is called "UCI HAR Dataset" and contains the following files:
 'test/y_test.txt' - a vector of the ids of the activities corresponding to each measurement in the test dataset\
 'train/subject_train.txt' - vector representing the id of the volunteer who performed the activity in the train set\
 'train/X_train.txt' - the values in the train dataset for all the features\
-'train/y_train.txt' - a vector of the ids of the activities corresponding to each measurement in the train dataset\
+'train/y_train.txt' - a vector of the ids of the activities corresponding to each measurement in the train dataset
 
 - the test and train directories also each contain a directory 'Initial Signals'
 
@@ -149,7 +149,7 @@ variables:
 86 frequency_body_accelerometer_magnitude_std\
 87 frequency_body_accelerometer_jerk_magnitude_std\
 88 frequency_body_gyroscope_magnitude_std\
-89 frequency_body_gyroscope_jerk_magnitude_std\
+89 frequency_body_gyroscope_jerk_magnitude_std
 
 - variables 4 to 89 represent averages per group of activity and subject 
 - for more info about each measurement type consult README.txt and the features_info.txt in the unzipped dataset directory 
