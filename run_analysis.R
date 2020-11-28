@@ -11,17 +11,14 @@ if(!file.exists("UCI HAR Dataset")){
 ## load required packages
 library(dplyr)
 
-## 1. merges the training and test data sets to create on data set 
-measurement_names <- read.table("./UCI HAR Dataset/features.txt")
-
+## 1. merges the training and test data sets to create one data set 
+features <- read.table("./UCI HAR Dataset/features.txt", header = FALSE)
 subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt", header = FALSE, col.names = "subject")
-X_test <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE, col.names = measurement_names[,2])
-y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", header = FALSE, col.names = c("activity")) 
-
+X_test <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE, col.names = features[,2])
+y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", header = FALSE, col.names = "activity") 
 subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", header = FALSE, col.names = "subject")
-X_train <- read.table("./UCI HAR Dataset/train/X_train.txt", header = FALSE, col.names = measurement_names[,2])
-y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", header = FALSE, col.names = c("activity"))
-
+X_train <- read.table("./UCI HAR Dataset/train/X_train.txt", header = FALSE, col.names = features[,2])
+y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", header = FALSE, col.names = "activity")
 test <- cbind(subject_test, y_test, X_test)
 train <- cbind(subject_train, y_train, X_train)
 full_dataset <- rbind(test,train)
@@ -39,11 +36,11 @@ mean_std <- select(mean_std, subject, activity_description, activity, everything
 names(mean_std) <- tolower(names(mean_std))
 names(mean_std) <- gsub("^t", "time", names(mean_std))
 names(mean_std) <- gsub("^f", "frequency", names(mean_std))
-names(mean_std) <-gsub("acc", "_accelerometer", names(mean_std))
-names(mean_std) <-gsub("gyro", "_gyroscope", names(mean_std))
-names(mean_std) <-gsub("mag", "_magnitude", names(mean_std))
+names(mean_std) <- gsub("acc", "_accelerometer", names(mean_std))
+names(mean_std) <- gsub("gyro", "_gyroscope", names(mean_std))
+names(mean_std) <- gsub("mag", "_magnitude", names(mean_std))
 names(mean_std) <- gsub("body", "_body", names(mean_std))
-names(mean_std) <-gsub("_body_body", "_body", names(mean_std))
+names(mean_std) <- gsub("_body_body", "_body", names(mean_std))
 names(mean_std) <- gsub("jerk", "_jerk", names(mean_std))
 names(mean_std) <- gsub("mean", "_mean", names(mean_std))
 names(mean_std) <- gsub("gravity", "_gravity", names(mean_std))
