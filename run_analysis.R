@@ -12,15 +12,15 @@ if(!file.exists("UCI HAR Dataset")){
 library(dplyr)
 
 ## 1. merges the training and test data sets to create on data set 
-col_names <- read.table("./UCI HAR Dataset/features.txt")
+measurement_names <- read.table("./UCI HAR Dataset/features.txt")
 
 subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt", header = FALSE, col.names = "subject")
-X_test <- read.table("./UCI HAR Dataset/test/X_test.txt", col.names = col_names[,2])
-y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", col.names = as.factor(c("activity"))) 
+X_test <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE, col.names = measurement_names[,2])
+y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", header = FALSE, col.names = c("activity")) 
 
 subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", header = FALSE, col.names = "subject")
-X_train <- read.table("./UCI HAR Dataset/train/X_train.txt", col.names = col_names[,2])
-y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", col.names = as.factor(c("activity")))
+X_train <- read.table("./UCI HAR Dataset/train/X_train.txt", header = FALSE, col.names = measurement_names[,2])
+y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", header = FALSE, col.names = c("activity"))
 
 test <- cbind(subject_test, y_test, X_test)
 train <- cbind(subject_train, y_train, X_train)
